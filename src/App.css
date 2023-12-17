@@ -1,5 +1,47 @@
+body {
+  background-color: #FFEFCA;
+}
+
 .App {
   text-align: center;
+  background-color: #FFCE00;
+  max-width: 45em;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 6px 0px 42px;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+h1 {
+  color: #005249;
+  font-size: 3em;
+}
+
+.TodoForm {
+  height: 40px;
+  margin: 17px 0px;
+}
+
+.todo-input {
+  padding: 10px;
+  height: -webkit-fill-available;
+  /* border: 2px solid blueviolet; */
+  border: 2px solid #005249;
+  background-color: transparent;
+  color: #005249;
+  min-width: 65%;
+  border-radius: 7px 0px 0px 7px;
+  outline: none;
+}
+
+.todo-btn {
+  height: -webkit-fill-available;
+  background-color: #005249;
+  border: #005249;
+  padding: 10px;
+  color: #ffefca;
+  border-radius: 0px 7px 7px 0px;
 }
 
 .App-logo {
@@ -32,7 +74,108 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.dropdown-div {
+  width: 83%;
+  text-align: right;
+}
+
+.dropdown,
+.dropdown option {
+  font-size: 17px;
+  outline: none;
+  padding: 8px;
+  border-radius: 7px;
+  font-weight: bold;
+  background-color: #ffefca;
+  color: #005249;
+}
+
+.Todo {
+  margin: 17px 0px;
+  padding: 10px;
+  height: -webkit-fill-available;
+  border: 2px solid #005249;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 7px;
+  display: flex;
+  width: 78%;
+  justify-content: space-between;
+}
+
+.Todo p {
+  margin: 0;
+  text-align: left;
+}
+
+.Todo p span {
+  font-size: 13px;
+  color: #c3c3c3;
+}
+
+.icon-div {
+  margin: 4px 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.check-text-div {
+  display: flex;
+  align-items: center;
+}
+
+.todo-div p {
+  line-break: anywhere;
+}
+
+.checkbox-div {
+  margin-right: 10px;
+  color: #005249;
+}
+
+.date {
+  font-size: 13px;
+  color: #7b7b7b;
+}
+
+.completed {
+  text-decoration: line-through;
+  line-break: anywhere;
+}
+
+button {
+  cursor: pointer;
+}
+
+.TodoWrapper {
+  text-align: -webkit-center;
+}
+
+.task {
+  color: #005249;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  background-color: #005249;
+  padding: 8px;
+  border-radius: 5px;
+  margin-left: 7px;
+  color: #ffefca;
+}
+
+.signature {
+  margin-bottom: -2em;
+  margin-top: 5em;
+  font-size: 14px;
 }
