@@ -85,13 +85,13 @@ export const TodoWrapper = () => {
                 todo.isEditing ? (
                     <EditTodoForm editTodo={editTask} task={todo} key={todo.id} id={index} />
                 ) : (
-                    filter == 'all' ? (
+                    filter === 'all' ? (
                         <Todo task={todo} key={todo.id} id={todo.id}
                             deleteTodo={deleteTodo}
                             editTodo={editTodo}
                             editTodoStatus={editTodoStatus} />
                     ) :
-                        filter == 'complete' ? (
+                        filter === 'complete' ? (
                             todo.isComplete ? (
                                 <Todo task={todo} key={todo.id} id={todo.id}
                                     deleteTodo={deleteTodo}
