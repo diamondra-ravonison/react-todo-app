@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TodoForm } from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
 import { Todo } from "./Todo";
@@ -13,6 +13,11 @@ export const TodoWrapper = () => {
     // State is a plain javascript object used by React to represent a piece of information
     // about the components's current situtation, managed bt the component itself
     // We have to import useState hook from React
+
+    useEffect(() => {
+        const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+        setTodos(storedTodos);
+    }, []); // Empty dependency array ensures this runs only once on mount
 
     const filterTodo = (event) => {
         setFilter(event.target.value);
@@ -41,30 +46,52 @@ export const TodoWrapper = () => {
 
         setFilter('all')
         document.getElementsByClassName('dropdown')[0].value = 'all';
+
+        // Update localstorage
+        localStorage.setItem('todos', JSON.stringify([...todos,
+        {
+            id: uuidv4(), task: todo,
+            completed: false, isEditing: false,
+            date: formattedDate, isComplete: false
+        }]))
     }
 
     const deleteTodo = id => {
-        setTodos(todos.filter(todo => todo.id !== id))
+        setTodos(todos.filter(todo => todo.id !== id));
+        localStorage.setItem('todos', JSON.stringify(todos.filter(todo => todo.id !== id)));
     }
 
+    // Update to manage the edit form
     const editTodo = id => {
         setTodos(todos.map(todo => todo.id === id ? {
             ...todo, isEditing: !todo.isEditing
         } : todo
-        ))
+        ));        
     }
 
+    // Update to mark a todo as completed or not
     const editTodoStatus = id => {
         setTodos(todos.map(todo => todo.id === id ? {
             ...todo, isComplete: !todo.isComplete
         } : todo
         ))
+
+        localStorage.setItem('todos', JSON.stringify(todos.map(todo => todo.id === id ? {
+            ...todo, isComplete: !todo.isComplete
+        } : todo
+        )));
     }
 
+    // Update the todo name
     const editTask = (task, id) => {
         setTodos(todos.map(todo => todo.id === id ? {
             ...todo, task, isEditing: !todo.isEditing
         } : todo))
+
+        localStorage.setItem('todos', JSON.stringify(todos.map(todo => todo.id === id ? {
+            ...todo, task, isEditing: false
+        } : todo
+        )));
     }
 
     return (
@@ -111,7 +138,7 @@ export const TodoWrapper = () => {
 
             ))}
 
-            <p class="signature" >Designed and built by Diamondra Ravonison</p>
+            <p className="signature" >Designed and built by Diamondra Ravonison</p>
         </div>
     )
 }

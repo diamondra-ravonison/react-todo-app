@@ -7,7 +7,7 @@ export const TodoForm = ({addTodo}) => {
         // Prevent from reloading the page
         e.preventDefault();
         
-        if (value != "") addTodo(value);
+        if (value !== "") addTodo(value);
 
         setValue("")
     }
