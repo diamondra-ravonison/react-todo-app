@@ -1,6 +1,6 @@
 {
-  "short_name": "Tick&Progress",
-  "name": "React To Do List App",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "task-list.png",
